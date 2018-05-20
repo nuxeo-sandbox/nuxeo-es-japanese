@@ -1,0 +1,38 @@
+version: '2'
+services:
+  nuxeo:
+    build: ./build_nuxeo
+    image: nuxeo:9.10-CUSTOM
+    ports:
+    - "8080:8080"
+    - "8787:8787"
+    environment:
+    - TZ=US/Pacific
+    - NUXEO_DEV_MODE=true
+    - "NUXEO_ES_HOSTS=elasticsearch:9300"
+    - "NUXEO_TEMPLATES=/opt/nuxeo/custom_templates/nuxeo-es-japanese"
+    - NUXEO_PACKAGES=nuxeo-9.10-HF08 ${STUDIO}
+    - NUXEO_ES_CLUSTER_NAME=docker-cluster
+    - "NUXEO_CUSTOM_PARAM=JAVA_OPTS=$$JAVA_OPTS -Xdebug -Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=n\nelasticsearch.httpReadOnly.baseUrl=http://elasticsearch:9200"
+    volumes:
+    - "./nuxeo_store:/opt/nuxeo/server/packages/store/"
+    - "./nuxeo_database:/var/lib/nuxeo/data/h2"
+    - "./nuxeo_binaries:/var/lib/nuxeo/data/binaries"
+    - "./nuxeo_packages:/opt/nuxeo/packages/"
+    - "./nuxeo_templates:/opt/nuxeo/custom_templates/"
+    - "./nuxeo_plugins:/opt/nuxeo/server/nxserver/plugins"
+    - "./instance.clid:/var/lib/nuxeo/data/instance.clid"
+    - "./.bashrc:/home/nuxeo/.bashrc"
+    links:
+    - elasticsearch
+  elasticsearch:
+    build: ./build_es
+    image: elasticsearch:5.6.9-CUSTOM
+    ports:
+    - "9200:9200"
+    environment:
+    - cluster.name=docker-cluster
+    - "discovery.type=single-node"
+    - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+    - "./es_data:/usr/share/elasticsearch/data"
