@@ -68,8 +68,8 @@
       },
       "kuromoji_nuxeo": {
         "type": "kuromoji_tokenizer",
-        "mode": "extended",
-        "discard_punctuation": "false"
+        "mode": "search",
+        "discard_punctuation": "true"
       }
     },
     "analyzer": {
