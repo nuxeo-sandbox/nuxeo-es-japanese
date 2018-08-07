@@ -54,6 +54,16 @@
           "_french_"
         ],
         "type": "stop"
+      },
+      "ja_stop": {
+        "type": "ja_stop",
+        "stopwords": [
+          "_japanese_"
+        ]
+      },
+      "keep_alphanum" : {
+        "type" : "keep_types",
+        "types" : [ "<NUM>","<ALPHANUM>" ]
       }
     },
     "tokenizer": {
@@ -68,14 +78,17 @@
       },
       "kuromoji_nuxeo": {
         "type": "kuromoji_tokenizer",
-        "mode": "extended",
-        "discard_punctuation": "false"
+        "mode": "search",
+        "discard_punctuation": "true"
       }
     },
     "analyzer": {
       "fulltext": {
         "type": "custom",
-        "tokenizer": "kuromoji_nuxeo"
+        "tokenizer": "kuromoji_nuxeo",
+        "filter": [
+          "ja_stop"
+        ]
       },
       "fulltext_en": {
         "char_filter": [
@@ -86,7 +99,8 @@
           "lowercase",
           "en_stop_filter",
           "en_stem_filter",
-          "asciifolding_filter"
+          "asciifolding_filter",
+          "keep_alphanum"
         ],
         "type": "custom",
         "tokenizer": "standard"
