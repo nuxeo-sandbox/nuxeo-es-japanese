@@ -1,7 +1,4 @@
 {
-  "_all": {
-    "enabled": false
-  },
   "dynamic_templates": [
     {
       "no_thumbnail_template": {
@@ -27,6 +24,14 @@
           "ignore_above": 256
         },
         "match_mapping_type": "string"
+      }
+    },{
+      "paths": {
+        "mapping": {
+          "type": "keyword",
+          "ignore_above": 32
+        },
+        "path_match": "ecm:path@level*"
       }
     }
   ],
@@ -61,6 +66,9 @@
         }
       },
       "type": "keyword"
+    },
+    "ecm:path@depth": {
+      "type": "integer"
     },
     "ecm:pos": {
       "type": "integer"
