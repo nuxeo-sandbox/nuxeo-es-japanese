@@ -86,7 +86,7 @@
         "type": "custom",
         "char_filter": [
             "icu_normalizer",
-            "kuromoji_iteration_mark "
+            "kuromoji_iteration_mark"
           ],
         "tokenizer": "kuromoji_nuxeo",
         "filter": [
