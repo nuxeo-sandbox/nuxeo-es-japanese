@@ -20,7 +20,7 @@
       "strings": {
         "mapping": {
           "type": "keyword",
-          "copy_to": ["all_field","all_field_en"],
+          "copy_to": ["all_field","all_field_en","all_field_romanji"],
           "ignore_above": 256
         },
         "match_mapping_type": "string"
@@ -44,10 +44,14 @@
       "type": "text",
       "analyzer": "fulltext_en"
     },
+    "all_field_romanji": {
+      "type": "text",
+      "analyzer": "fulltext_romanji"
+    },
     "ecm:name": {
       "type": "keyword",
       "ignore_above": 256,
-      "copy_to": ["all_field","all_field_en"]
+      "copy_to": ["all_field"]
     },
     "ecm:acl": {
       "type": "keyword"
@@ -55,7 +59,7 @@
     "ecm:binarytext": {
       "type": "text",
       "analyzer": "fulltext",
-      "copy_to": ["all_field","all_field_en"]
+      "copy_to": ["all_field","all_field_en","all_field_romanji"]
     },
     "ecm:path": {
       "fields": {
@@ -92,25 +96,47 @@
       "index": false,
       "type": "keyword"
     },
+
     "dc:title": {
       "type": "text",
-      "copy_to": ["all_field","all_field_en"],
+      "copy_to": ["all_field","all_field_en","all_field_romanji"],
       "fielddata": true,
       "fields": {
         "fulltext": {
           "analyzer": "fulltext",
           "type": "text",
           "boost": 2
+        },
+        "fulltext_romanji": {
+          "analyzer": "fulltext_romanji",
+          "type": "text",
+          "boost": 2
+        },
+       "fulltext_en": {
+          "analyzer": "fulltext_en",
+          "type": "text",
+          "boost": 2
         }
       }
     },
+
     "dc:description": {
       "type": "keyword",
-      "copy_to": ["all_field","all_field_en"],
+      "copy_to": ["all_field","all_field_en","all_field_romanji"],
       "ignore_above": 32765,
       "fields": {
         "fulltext": {
           "analyzer": "fulltext",
+          "type": "text",
+          "boost": 1.5
+        },
+        "fulltext_romanji": {
+          "analyzer": "fulltext_romanji",
+          "type": "text",
+          "boost": 1.5
+        },
+       "fulltext_en": {
+          "analyzer": "fulltext_en",
           "type": "text",
           "boost": 1.5
         }
@@ -155,11 +181,19 @@
     },
     "note:note": {
       "type": "keyword",
-      "copy_to": "all_field",
+      "copy_to": ["all_field","all_field_en","all_field_romanji"],
       "ignore_above": 256,
       "fields": {
         "fulltext": {
           "analyzer": "fulltext",
+          "type": "text"
+        },
+        "fulltext_romanji": {
+          "analyzer": "fulltext_romanji",
+          "type": "text"
+        },
+       "fulltext_en": {
+          "analyzer": "fulltext_en",
           "type": "text"
         }
       }
