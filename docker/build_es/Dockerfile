@@ -1,5 +1,4 @@
-FROM docker.elastic.co/elasticsearch/elasticsearch:5.6.9
+FROM docker.elastic.co/elasticsearch/elasticsearch:6.5.4
 
-RUN bin/elasticsearch-plugin remove x-pack
 RUN bin/elasticsearch-plugin install analysis-kuromoji
 RUN bin/elasticsearch-plugin install analysis-icu
