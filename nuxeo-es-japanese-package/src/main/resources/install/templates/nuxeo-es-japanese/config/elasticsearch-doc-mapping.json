@@ -21,7 +21,21 @@
         "mapping": {
           "type": "keyword",
           "copy_to": ["all_field","all_field_en","all_field_romanji"],
-          "ignore_above": 256
+          "ignore_above": 256,
+          "fields": {
+            "fulltext": {
+              "analyzer": "fulltext",
+              "type": "text"
+            },
+            "fulltext_romanji": {
+              "analyzer": "fulltext_romanji",
+              "type": "text"
+            },
+           "fulltext_en": {
+              "analyzer": "fulltext_en",
+              "type": "text"
+            }
+          }
         },
         "match_mapping_type": "string"
       }
