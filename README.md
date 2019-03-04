@@ -27,6 +27,13 @@ mvn clean install
 * Install the marketplace package from the admin center or using nuxeoctl
 * Reindex the nuxeo repository
 
+## Test with Docker
+```
+git clone https://github.com/nuxeo-sandbox/nuxeo-es-japanese
+cd nuxeo-es-japanese/docker
+docker-compose up
+```
+
 ## Known limitations
 This plugin is a work in progress.
 
