@@ -12,7 +12,7 @@ services:
     - "NUXEO_ES_HOSTS=elasticsearch:9300"
     - "NUXEO_TEMPLATES=/opt/nuxeo/custom_templates/nuxeo-es-japanese"
     - NUXEO_CLID=${CLID}
-    - NUXEO_PACKAGES= ${STUDIO}
+    - NUXEO_PACKAGES=nuxeo-web-ui ${STUDIO}
     - NUXEO_ES_CLUSTER_NAME=docker-cluster
     - "NUXEO_CUSTOM_PARAM=JAVA_OPTS=$$JAVA_OPTS -Xdebug -Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=n\nelasticsearch.httpReadOnly.baseUrl=http://elasticsearch:9200"
     volumes:
