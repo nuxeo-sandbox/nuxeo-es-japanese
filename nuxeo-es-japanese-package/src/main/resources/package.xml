@@ -1,8 +1,8 @@
 <!-- See documentation at http://doc.nuxeo.com/x/HgIz -->
 <package type="addon" name="nuxeo-es-japanese" version="@VERSION@">
-  <title>Nuxeo es japanese</title>
+  <title>Nuxeo Elasticsearch Fulltext Search Configuration for Japanese</title>
   <description>
-    <p>Put here an HTML description of your Nuxeo Package.</p>
+    <p>This package provides a configuration and mapping to configure Elasticsearch for Japanese fulltext search.</p>
   </description>
   <!-- <home-page>http://doc.nuxeo.com/</home-page> -->
   <vendor></vendor>
