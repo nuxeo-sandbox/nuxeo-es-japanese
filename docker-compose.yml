@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  nuxeo:
+    image: nuxeo-es-japanese:2021.0.0-SNAPSHOT
+    ports:
+      - "8080:8080"
+      - "8787:8787"
+    environment:
+      - TZ= "US/Pacific"
+      - JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8787
+      - NUXEO_DEV=true
+      - NUXEO_CLID=${NUXEO_CLID}
+      - NUXEO_PACKAGES=nuxeo-web-ui
+    volumes:
+      - ./conf.d:/etc/nuxeo/conf.d
+      - nuxeo_data:/var/lib/nuxeo
+  elasticsearch:
+    build:
+      context: .
+      dockerfile: ./docker/build_es/Dockerfile
+      args:
+      - "ELASTICSEARCH_IMAGE=${ELASTICSEARCH_IMAGE}"
+    image: elasticsearch:7.12-JA
+    env_file:
+      - ./.env
+    ports:
+      - "9200:9200"
+    environment:
+      - cluster.name=docker-cluster
+      - "discovery.type=single-node"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - "es_data:/usr/share/elasticsearch/data"
+volumes:
+  nuxeo_data: {}
+  es_data: {}

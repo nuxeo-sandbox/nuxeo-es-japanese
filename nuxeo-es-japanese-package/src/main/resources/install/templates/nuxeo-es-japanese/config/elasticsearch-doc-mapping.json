@@ -20,7 +20,11 @@
       "strings": {
         "mapping": {
           "type": "keyword",
-          "copy_to": ["all_field","all_field_en","all_field_romanji"],
+          "copy_to": [
+            "all_field",
+            "all_field_en",
+            "all_field_romanji"
+          ],
           "ignore_above": 256,
           "fields": {
             "fulltext": {
@@ -31,7 +35,7 @@
               "analyzer": "fulltext_romanji",
               "type": "text"
             },
-           "fulltext_en": {
+            "fulltext_en": {
               "analyzer": "fulltext_en",
               "type": "text"
             }
@@ -39,7 +43,8 @@
         },
         "match_mapping_type": "string"
       }
-    },{
+    },
+    {
       "paths": {
         "mapping": {
           "type": "keyword",
@@ -65,7 +70,9 @@
     "ecm:name": {
       "type": "keyword",
       "ignore_above": 256,
-      "copy_to": ["all_field"]
+      "copy_to": [
+        "all_field"
+      ]
     },
     "ecm:acl": {
       "type": "keyword"
@@ -73,7 +80,11 @@
     "ecm:binarytext": {
       "type": "text",
       "analyzer": "fulltext",
-      "copy_to": ["all_field","all_field_en","all_field_romanji"]
+      "copy_to": [
+        "all_field",
+        "all_field_en",
+        "all_field_romanji"
+      ]
     },
     "ecm:path": {
       "fields": {
@@ -110,49 +121,49 @@
       "index": false,
       "type": "keyword"
     },
-
     "dc:title": {
       "type": "text",
-      "copy_to": ["all_field","all_field_en","all_field_romanji"],
+      "copy_to": [
+        "all_field",
+        "all_field_en",
+        "all_field_romanji"
+      ],
       "fielddata": true,
       "fields": {
         "fulltext": {
           "analyzer": "fulltext",
-          "type": "text",
-          "boost": 2
+          "type": "text"
         },
         "fulltext_romanji": {
           "analyzer": "fulltext_romanji",
-          "type": "text",
-          "boost": 2
+          "type": "text"
         },
-       "fulltext_en": {
+        "fulltext_en": {
           "analyzer": "fulltext_en",
-          "type": "text",
-          "boost": 2
+          "type": "text"
         }
       }
     },
-
     "dc:description": {
       "type": "keyword",
-      "copy_to": ["all_field","all_field_en","all_field_romanji"],
+      "copy_to": [
+        "all_field",
+        "all_field_en",
+        "all_field_romanji"
+      ],
       "ignore_above": 32765,
       "fields": {
         "fulltext": {
           "analyzer": "fulltext",
-          "type": "text",
-          "boost": 1.5
+          "type": "text"
         },
         "fulltext_romanji": {
           "analyzer": "fulltext_romanji",
-          "type": "text",
-          "boost": 1.5
+          "type": "text"
         },
-       "fulltext_en": {
+        "fulltext_en": {
           "analyzer": "fulltext_en",
-          "type": "text",
-          "boost": 1.5
+          "type": "text"
         }
       }
     },
@@ -195,7 +206,11 @@
     },
     "note:note": {
       "type": "keyword",
-      "copy_to": ["all_field","all_field_en","all_field_romanji"],
+      "copy_to": [
+        "all_field",
+        "all_field_en",
+        "all_field_romanji"
+      ],
       "ignore_above": 256,
       "fields": {
         "fulltext": {
@@ -206,7 +221,7 @@
           "analyzer": "fulltext_romanji",
           "type": "text"
         },
-       "fulltext_en": {
+        "fulltext_en": {
           "analyzer": "fulltext_en",
           "type": "text"
         }

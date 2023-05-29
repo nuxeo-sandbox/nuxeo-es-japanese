@@ -3,25 +3,13 @@
   <parent>
     <groupId>org.nuxeo.labs.es.japanese</groupId>
     <artifactId>nuxeo-es-japanese-parent</artifactId>
-    <version>10.10-SNAPSHOT</version>
+    <version>2021.0.0-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
   <artifactId>nuxeo-es-japanese-package</artifactId>
   <packaging>zip</packaging>
-  <name>Nuxeo es japanese package - Nuxeo es japanese</name>
-
-  <dependencies>
-    <!-- Base distribution(s) for the MP -->
-    <dependency>
-      <groupId>org.nuxeo.ecm.distribution</groupId>
-      <artifactId>nuxeo-nxr-server</artifactId>
-      <type>zip</type>
-      <scope>provided</scope>
-    </dependency>
-
-    <!-- Additional bundles to be deployed by the MP -->
-  </dependencies>
+  <name>Nuxeo Elasticsearch Japanese Language Configuration Package</name>
 
   <build>
     <plugins>
@@ -36,6 +24,5 @@
       </plugin>
     </plugins>
   </build>
-
 
 </project>

@@ -1,4 +1,5 @@
-FROM docker.elastic.co/elasticsearch/elasticsearch:6.5.4
+ARG ELASTICSEARCH_IMAGE
+FROM ${ELASTICSEARCH_IMAGE}
 
 RUN bin/elasticsearch-plugin install analysis-kuromoji
 RUN bin/elasticsearch-plugin install analysis-icu

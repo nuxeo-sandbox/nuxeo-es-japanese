@@ -30,7 +30,7 @@ mvn clean install
 ## Test with Docker
 ```
 git clone https://github.com/nuxeo-sandbox/nuxeo-es-japanese
-cd nuxeo-es-japanese/docker
+cd nuxeo-es-japanese
 docker-compose up
 ```
 
