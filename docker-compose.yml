@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   nuxeo:
-    image: nuxeo-es-japanese:2021.1.0-SNAPSHOT
+    image: nuxeo-es-japanese:2023.0.0-SNAPSHOT
     ports:
       - "8080:8080"
       - "8787:8787"
@@ -14,23 +14,25 @@ services:
     volumes:
       - ./conf.d:/etc/nuxeo/conf.d
       - nuxeo_data:/var/lib/nuxeo
-  elasticsearch:
+  opensearch:
     build:
       context: .
       dockerfile: ./docker/build_es/Dockerfile
       args:
-      - "ELASTICSEARCH_IMAGE=${ELASTICSEARCH_IMAGE}"
-    image: elasticsearch:7.12-JA
+      - "OPENSEARCH_IMAGE=${OPENSEARCH_IMAGE}"
+    image: opensearch:1.3.11-JA
     env_file:
       - ./.env
     ports:
       - "9200:9200"
     environment:
-      - cluster.name=docker-cluster
-      - "discovery.type=single-node"
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+      - cluster.name=opensearch
+      - bootstrap.memory_lock=true
+      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "DISABLE_SECURITY_PLUGIN=true"
     volumes:
-      - "es_data:/usr/share/elasticsearch/data"
+      - "opensearch_data:/usr/share/opensearch/data"
 volumes:
   nuxeo_data: {}
-  es_data: {}
+  opensearch_data: {}

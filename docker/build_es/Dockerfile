@@ -1,5 +1,5 @@
-ARG ELASTICSEARCH_IMAGE
-FROM ${ELASTICSEARCH_IMAGE}
+ARG OPENSEARCH_IMAGE
+FROM ${OPENSEARCH_IMAGE}
 
-RUN bin/elasticsearch-plugin install analysis-kuromoji
-RUN bin/elasticsearch-plugin install analysis-icu
+RUN bin/opensearch-plugin install analysis-kuromoji
+RUN bin/opensearch-plugin install analysis-icu
