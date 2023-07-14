@@ -1,5 +1,5 @@
 ## Description
-This package provides an elasticsearch configuration and mapping for Japanese fulltext search.
+This package provides an elasticsearch / opensearch configuration and mapping for Japanese fulltext search.
 
 ## Important Note
 
@@ -10,7 +10,7 @@ These solutions are provided for inspiration and we encourage customers to use t
 This is a moving project (no API maintenance, no deprecation process, etc.) If any of these solutions are found to be useful for the Nuxeo Platform in general, they will be integrated directly into platform, not maintained here.
 
 ## Requirements
-This plugin requires the ICU and Kurumoji analysis plugins to be installed on the elasticsearch nodes.
+This plugin requires the ICU and Kurumoji analysis plugins to be installed on the elasticsearch / opensearch nodes.
 
 ## How to build
 Building requires the following software:
